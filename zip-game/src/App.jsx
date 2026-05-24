@@ -263,19 +263,19 @@ export default function App() {
   const getPathIndex = (row, col) =>
     path.findIndex((p) => p[0] === row && p[1] === col);
 
-  // ── Wall edge CSS ──────────────────────────────────────────────
+  // ── Wall edge CSS — thick dark bars like real LinkedIn ZIP ──────
   const getWallStyle = (row, col) => {
     const style = {};
+    const W = "4px solid #e2e8f0"; // thick light bar on dark bg
     walls.forEach((w) => {
-      if (w.dir === "right" && w.row === row && w.col === col)
-        style.borderRight = "3px solid #f472b6";
       if (w.dir === "bottom" && w.row === row && w.col === col)
-        style.borderBottom = "3px solid #f472b6";
-      // mirror: right wall of col means left wall of col+1
+        style.borderBottom = W;
+      if (w.dir === "bottom" && w.row === row - 1 && w.col === col)
+        style.borderTop = W;
+      if (w.dir === "right" && w.row === row && w.col === col)
+        style.borderRight = W;
       if (w.dir === "right" && w.row === row && w.col === col - 1)
-        style.borderLeft = "3px solid #f472b6";
-      if (w.dir === "bottom" && w.col === col && w.row === row - 1)
-        style.borderTop = "3px solid #f472b6";
+        style.borderLeft = W;
     });
     return style;
   };
@@ -325,7 +325,7 @@ export default function App() {
           </h1>
         </div>
         <p style={{ color: "#a78bfa", fontSize: 13, fontFamily: "monospace", letterSpacing: "0.08em" }}>
-          Exclusive edition ninkkkk 💜
+          for your boyfriend 💜
         </p>
       </div>
 
