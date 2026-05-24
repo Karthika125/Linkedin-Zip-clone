@@ -266,16 +266,16 @@ export default function App() {
   // ── Wall edge CSS — thick dark bars like real LinkedIn ZIP ──────
   const getWallStyle = (row, col) => {
     const style = {};
-    const W = "4px solid #e2e8f0"; // thick light bar on dark bg
+    const W = "4px solid #e2e8f0";
     walls.forEach((w) => {
-      if (w.dir === "bottom" && w.row === row && w.col === col)
-        style.borderBottom = W;
-      if (w.dir === "bottom" && w.row === row - 1 && w.col === col)
-        style.borderTop = W;
-      if (w.dir === "right" && w.row === row && w.col === col)
-        style.borderRight = W;
-      if (w.dir === "right" && w.row === row && w.col === col - 1)
-        style.borderLeft = W;
+      if (w.dir === "bottom") {
+        if (w.row === row && w.col === col)       style.borderBottom = W;
+        if (w.row === row - 1 && w.col === col)   style.borderTop = W;
+      }
+      if (w.dir === "right") {
+        if (w.row === row && w.col === col)       style.borderRight = W;
+        if (w.row === row && w.col === col - 1)   style.borderLeft = W;
+      }
     });
     return style;
   };
