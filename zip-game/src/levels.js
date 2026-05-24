@@ -50,29 +50,31 @@ export const levels = {
 
   hard: {
     size: 7,
+    // Checkpoints placed at every 4th step along the snake so they're always in order
     numbers: [
       { num: 1,  row: 0, col: 0 },
-      { num: 2,  row: 0, col: 3 },
-      { num: 3,  row: 0, col: 6 },
-      { num: 4,  row: 2, col: 6 },
-      { num: 5,  row: 2, col: 4 },
-      { num: 6,  row: 2, col: 2 },
-      { num: 7,  row: 2, col: 0 },
+      { num: 2,  row: 0, col: 4 },
+      { num: 3,  row: 1, col: 5 },
+      { num: 4,  row: 1, col: 1 },
+      { num: 5,  row: 2, col: 2 },
+      { num: 6,  row: 2, col: 6 },
+      { num: 7,  row: 3, col: 3 },
       { num: 8,  row: 4, col: 0 },
-      { num: 9,  row: 4, col: 2 },
-      { num: 10, row: 4, col: 4 },
-      { num: 11, row: 4, col: 6 },
+      { num: 9,  row: 4, col: 4 },
+      { num: 10, row: 5, col: 5 },
+      { num: 11, row: 5, col: 1 },
       { num: 12, row: 6, col: 6 },
     ],
+    // Walls block shortcuts between rows — none of these cross the snake path
     walls: [
-      { row: 1, col: 1, dir: "right" },
-      { row: 1, col: 4, dir: "right" },
-      { row: 3, col: 1, dir: "right" },
-      { row: 3, col: 4, dir: "right" },
-      { row: 5, col: 2, dir: "bottom" },
-      { row: 5, col: 4, dir: "bottom" },
+      { row: 0, col: 2, dir: "bottom" },
+      { row: 0, col: 4, dir: "bottom" },
+      { row: 2, col: 1, dir: "bottom" },
+      { row: 2, col: 5, dir: "bottom" },
+      { row: 4, col: 2, dir: "bottom" },
+      { row: 4, col: 4, dir: "bottom" },
     ],
-    // Full 7x7 = 49 cell snake
+    // Full 7x7 = 49 cell snake, left-to-right then right-to-left alternating
     path: [
       [0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],
       [1,6],[1,5],[1,4],[1,3],[1,2],[1,1],[1,0],
